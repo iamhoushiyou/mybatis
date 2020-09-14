@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper 
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--此Mapper配置文件相当于接口实现类-->
+<!--namespace绑定一个对应的Dao/Mapper接口-->
+<!--核心文件-->
+<!--        select * from mybatis.user where name like #{value};-->
+<mapper namespace="com.kuang.dao.UserMapper">
+<!--    select查询语句-->
+    <select id="getUserList" resultType="User">
+        select * from user
+    </select>
+    <select id="getUserById" parameterType="int" resultType="com.kuang.pojo.User">
+        select * from user where id=#{id}
+    </select>
+    <insert id="addUser" parameterType="com.kuang.pojo.User">
+        insert into mybatis.user(id, name, pwd) values (#{id},#{name},#{pwd});
+    </insert>
+    <update id="updateUser" parameterType="com.kuang.pojo.User">
+        update user set  name=#{name},pwd=#{pwd}  where id=#{id};
+    </update>
+    <delete id="deleteUser" parameterType="int">
+        delete from user where id=#{id}
+    </delete>
+
+</mapper>

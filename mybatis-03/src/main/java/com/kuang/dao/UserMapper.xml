@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper 
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--此Mapper配置文件相当于接口实现类-->
+<!--namespace绑定一个对应的Dao/Mapper接口-->
+<!--核心文件-->
+<!--        select * from mybatis.user where name like #{value};-->
+<mapper namespace="com.kuang.dao.UserMapper">
+<!--    select查询语句,类型处理器可以将字段和javabean对应-->
+
+<!-- select * from user-->
+    <resultMap id="userMap" type="user">
+<!--        column数据库中的字段，property javabean属性-->
+<!--        <result column="id" property="id"/>-->
+<!--        <result column="name" property="name"/>-->
+        <result column="pwd" property="password"/>
+    </resultMap>
+    <select id="getUserById" resultMap="userMap">
+            select * from user where id=#{id}
+    </select>
+</mapper>
