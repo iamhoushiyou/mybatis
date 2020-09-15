@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--configuration 的核心配置文件-->
+<configuration>
+<!--    引入外部配置文件-->
+    <properties resource="db.properties">
+<!--   可以再加属性，优先使用外部配置文件，即properties里的配置 <property name="" value=""/>-->
+    </properties>
+        <settings>
+            <setting name="logImpl" value="LOG4J"/>
+        </settings>
+
+<!--    可以给实体类起别名-->
+    <typeAliases>
+<!--        将类取别名,实体类少的时候-->
+        <typeAlias type="com.kuang.pojo.User" alias="User"/>
+<!--        将包取别名,默认别名就是其类的首字母小写，实体类多的时候，即com.kuang.pojo。User===》user -->
+        <package name="com.kuang.pojo"/>
+    </typeAliases>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <!--连接如果不设置useUnicode和字符会出现中文乱码, useSSL=false忽略版本兼容问题，serverTimezone=UTC时区-->
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="com/kuang/dao/TeacherMapper.xml"/>
+        <mapper resource="com/kuang/dao/StudentMapper.xml"/>
+    </mappers>
+</configuration>

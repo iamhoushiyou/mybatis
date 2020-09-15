@@ -20,7 +20,7 @@ public interface UserMapper {
 
     /**
      * 分页查询
-     * @param map 包含"start_index" , "pageSize"
+     * @param map 包含“start_index” , “pageSize"
      * @return 用户对象
      */
     List<User> getUserByLimit(Map<String,Integer> map);

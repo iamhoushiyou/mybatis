@@ -19,7 +19,4 @@
     <select id="getUserById" resultMap="userMap">
             select * from user where id=#{id}
     </select>
-    <select id="getUserByLimit" parameterType="map" resultMap="userMap">
-        select * from user limit #{start_index},#{pageSize}
-    </select>
 </mapper>
